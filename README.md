@@ -1,7 +1,7 @@
 # Currency-Converter
 In this repository there is a project of Currency converter which is made by using by HTML, CSS and Javascript language.
 To run this project in your Device :
-1) Clone the complete repository into System.
+1) Clone the complete repository into your System.
 2) Go to https://apilayer.com/
 3) Here make your free account.
 4) Then go to Browse API Marketplace and after that search for the API available for Curreny. There you will get a API named as Exchange Rates Data API.
