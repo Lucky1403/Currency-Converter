@@ -32,7 +32,7 @@ const updateExchangeRate = async () => {
     amount.value = "1";
   }
 
-  const URL = `${BASE_URL}/convert?to=${toCurr.value.toUpperCase()}&from=${fromCurr.value.toUpperCase()}&amount=${amtVal}&apikey=s5iV2nqOQ5hpVvA5LVZimuvp4zOB0rvx`;
+  const URL = `${BASE_URL}/convert?to=${toCurr.value.toUpperCase()}&from=${fromCurr.value.toUpperCase()}&amount=${amtVal}&apikey=<api key>`;
   let response = await fetch(URL);
   let data = await response.json();
   let rate = data.info.rate;
