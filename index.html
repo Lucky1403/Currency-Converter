@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Currency Dashboard - Live Exchange Rates</title>
+    
+    <!-- Meta tags for SEO -->
+    <meta name="description" content="A beautiful, responsive, and keyless currency converter with live charts, popular exchange rates, and quick conversion tables." />
+    <meta name="keywords" content="currency converter, exchange rates, foreign exchange, forex, live currency converter" />
+    
+    <link href="style.css" rel="stylesheet" />
+    
+    <!-- FontAwesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <!-- Ambient Background Blur Effects -->
+    <div class="bg-glow-1" aria-hidden="true"></div>
+    <div class="bg-glow-2" aria-hidden="true"></div>
+
+    <main class="dashboard">
+      <!-- LEFT COLUMN: CONVERTER CARD -->
+      <section class="card converter-card" aria-labelledby="main-title">
+        <header class="card-header">
+          <div class="card-title-group">
+            <h1 id="main-title">Currency Converter</h1>
+            <div class="card-subtitle">Real-time keyless exchange rates</div>
+          </div>
+          
+          <div class="theme-toggle-container">
+            <button id="themeToggle" class="theme-switch-btn" aria-label="Toggle theme" type="button">
+              <i class="fa-solid fa-sun sun-icon" aria-hidden="true"></i>
+              <span class="switch-thumb"></span>
+              <i class="fa-solid fa-moon moon-icon" aria-hidden="true"></i>
+            </button>
+          </div>
+        </header>
+
+        <form id="converterForm">
+          <div class="form-group amount">
+            <label for="amountInput">Enter Amount</label>
+            <div class="amount-wrapper">
+              <input 
+                id="amountInput" 
+                value="1" 
+                type="number" 
+                min="0.01" 
+                step="any" 
+                placeholder="Enter amount..." 
+                required 
+              />
+            </div>
+          </div>
+
+          <div class="dropdown-grid">
+            <div class="form-group from">
+              <label for="fromSelect">From</label>
+              <div class="select-container">
+                <img id="fromFlag" src="https://flagsapi.com/US/flat/64.png" alt="US flag" />
+                <select name="from" id="fromSelect" aria-label="From currency"></select>
+              </div>
+            </div>
+
+            <div class="swap-btn-container">
+              <button type="button" id="swapBtn" class="swap-btn" aria-label="Swap currencies">
+                <i class="fa-solid fa-arrow-right-arrow-left" aria-hidden="true"></i>
+              </button>
+            </div>
+
+            <div class="form-group to">
+              <label for="toSelect">To</label>
+              <div class="select-container">
+                <img id="toFlag" src="https://flagsapi.com/IN/flat/64.png" alt="India flag" />
+                <select name="to" id="toSelect" aria-label="To currency"></select>
+              </div>
+            </div>
+          </div>
+
+          <div class="result-display-container">
+            <div id="resultMsg" class="msg">1 USD = 83.45 INR</div>
+            <div id="rateSubMsg" class="msg-rate-sub">1 USD = 83.45 INR • Last updated recently</div>
+            <button type="button" id="copyBtn" class="copy-btn" title="Copy to clipboard" aria-label="Copy rate to clipboard">
+              <i class="fa-regular fa-copy" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <button type="submit" id="convertBtn" class="convert-btn">
+            <span>Convert</span>
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </button>
+        </form>
+      </section>
+
+      <!-- RIGHT COLUMN: DETAILED INFO -->
+      <section class="details-section">
+        <!-- SVG Sparkline Trend Chart -->
+        <div class="card details-card">
+          <h3 id="chartHeading"><i class="fa-solid fa-chart-line" aria-hidden="true"></i> 7-Day Trend</h3>
+          <div class="chart-container">
+            <div id="chartLoader" class="chart-loader">Connecting to live market...</div>
+            <svg id="trendChart" class="chart-svg" viewBox="0 0 400 150" preserveAspectRatio="none">
+              <!-- Dynamically populated chart visual -->
+            </svg>
+          </div>
+        </div>
+
+        <!-- Quick Conversion Table -->
+        <div class="card details-card">
+          <h3><i class="fa-solid fa-table-list" aria-hidden="true"></i> Quick Conversion Table</h3>
+          <div class="conversion-table-container">
+            <table class="conversion-table">
+              <thead>
+                <tr>
+                  <th id="tblColFrom">From Code</th>
+                  <th id="tblColTo">To Code</th>
+                </tr>
+              </thead>
+              <tbody id="conversionTableBody">
+                <!-- Dynamically populated rows -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Popular Rates -->
+        <div class="card details-card">
+          <h3><i class="fa-solid fa-earth-americas" aria-hidden="true"></i> Popular Exchange Rates</h3>
+          <div class="popular-rates-grid" id="popularRatesGrid">
+            <!-- Dynamically populated rate capsules -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast" role="status" aria-live="polite">
+      <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+      <span id="toastMsg">Copied conversion rate!</span>
+    </div>
+
+    <!-- Scripts -->
+    <script src="codes.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
