@@ -38,7 +38,7 @@ A premium, responsive, and serverless currency converter web application. Built 
 
 ## 🚀 How to Run Locally
 
-Since the project is built entirely on client-side web technologies, you can run it easily:
+Since the project is built entirely on client-side web technologies, you can run it easily. First clone the repository
 
 ### Option 1: Direct Execution
 1. Double-click the `index.html` file to open it directly in any modern web browser.
